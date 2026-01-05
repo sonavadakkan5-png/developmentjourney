@@ -1,0 +1,25 @@
+from mysql import connector
+
+connection = connector.connect(
+
+    host="localhost",
+    user="root",
+    password="Password@123",
+    database="tripwise_db"
+)
+
+curser = connection.cursor()
+
+query = " delete from user where id = %s"
+
+data=(2,)
+
+curser.execute(query,data)
+
+connection.commit()
+
+print("record deleted") 
+
+curser.close()
+
+connection.close()

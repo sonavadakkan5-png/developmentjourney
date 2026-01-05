@@ -1,0 +1,13 @@
+menu:
+    breakfast:
+        tea
+        coffie
+        idly
+        dosa
+    lunch:
+        meals
+        biriyani
+        friedrice
+    dinner:
+        arabian-rice
+        friuts
