@@ -1,0 +1,13 @@
+[
+    {"roll_no":1,"name":"sona","course":"python","gender":"female"},
+    {"roll_no":2,"name":"saniya","course":"js","gender":"female"},
+    {"roll_no":3,"name":"ambika","course":"python","gender":"female"},
+    {"roll_no":4,"name":"amal","course":"js","gender":"male"},
+    {"roll_no":5,"name":"arun","course":"python","gender":"male"},
+    {"roll_no":6,"name":"zera","course":"ds","gender":"female"},
+    {"roll_no":7,"name":"zara","course":"python","gender":"female"},
+    {"roll_no":8,"name":"neeli","course":"ds","gender":"female"},
+    {"roll_no":9,"name":"priya","course":"python","gender":"female"},
+    {"roll_no":10,"name":"minu","course":"js","gender":"female"}
+  
+]
