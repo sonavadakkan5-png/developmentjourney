@@ -1,31 +1,28 @@
 from mysql import connector
 
-class studentdb:
+class Hospital:
 
     def __init__(self):
-        
+
         try:
-            
+        
             self.connection = connector.connect(
 
                 host="localhost",
-
                 user="root",
-
                 password="Password@123",
-
-                database="student_management_db"
+                database="hospital_db"
             )
 
-            self.cursor =self.connection.cursor()
+            self.cursor = self.connection.cursor()
 
-            print("database connection ok")
+            print("data base connection ok....")
 
         except Exception as e:
 
             print(e)
 
-    def add_student(self,**kwargs):
+    def add_details(self,**kwargs):
 
         try:
                 column=""
@@ -44,7 +41,7 @@ class studentdb:
 
                 query=f"""
 
-                insert into student({column}) values({values})
+                insert into hospital({column}) values({values})
 
                 """
 
@@ -60,11 +57,11 @@ class studentdb:
              
              print(e)
 
-    def list_student(self):
+    def list_details(self):
          
         try:
               
-            query = "select * from student "
+            query = "select * from hospital "
 
             self.cursor.execute(query)
 
@@ -81,7 +78,7 @@ class studentdb:
          
         try:
               
-            query="select * from student where id = %s"
+            query="select * from hospital where patient_id = %s"
 
             data = (id,)
 
@@ -99,7 +96,7 @@ class studentdb:
 
         try:
 
-            query="delete from student where id =%s"
+            query="delete from hospital where patient_id =%s"
 
             data=(id,)
 
@@ -113,7 +110,7 @@ class studentdb:
 
             print(e)
 
-    def update_record(self,id,**kwargs):
+    def update_record(self,patient_id,**kwargs):
 
         place_holder = ""
 
@@ -123,7 +120,7 @@ class studentdb:
 
         place_holder=place_holder.rstrip(",")
 
-        query=f"update student set {place_holder} where  id={id} "
+        query=f"update hospital set {place_holder} where  patient_id={id} "
 
         data = [v for k,v in kwargs.items()]
 
@@ -131,17 +128,16 @@ class studentdb:
 
         self.connection.commit()
 
+        
 
-instance = studentdb()
+instance = Hospital()
 
-# instance.add_student(name="arun",email="arun@gmail.com",phone="45784512458",course="msc")
+# instance.add_details(patient_name="sneha",age=35,gender="Female",phone="1478545777",address="mangalath",doctor_name="suma")
 
-# instance.list_student()
+# instance.list_details()
 
-instance.fetch_id(2)
-
-instance.update_record(name="sera",id=1)
+# instance.fetch_id(1)
 
 instance.delete_records(4)
 
-instance.list_student()
+instance.update_record(doctor_name="murali",patient_id=1)

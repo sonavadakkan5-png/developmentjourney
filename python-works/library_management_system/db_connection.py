@@ -1,6 +1,6 @@
 from mysql import connector
 
-class studentdb:
+class Library:
 
     def __init__(self):
         
@@ -14,7 +14,7 @@ class studentdb:
 
                 password="Password@123",
 
-                database="student_management_db"
+                database="library_db"
             )
 
             self.cursor =self.connection.cursor()
@@ -25,7 +25,7 @@ class studentdb:
 
             print(e)
 
-    def add_student(self,**kwargs):
+    def add_library(self,**kwargs):
 
         try:
                 column=""
@@ -44,7 +44,7 @@ class studentdb:
 
                 query=f"""
 
-                insert into student({column}) values({values})
+                insert into library({column}) values({values})
 
                 """
 
@@ -60,11 +60,11 @@ class studentdb:
              
              print(e)
 
-    def list_student(self):
+    def list_library(self):
          
         try:
               
-            query = "select * from student "
+            query = "select * from library "
 
             self.cursor.execute(query)
 
@@ -81,7 +81,7 @@ class studentdb:
          
         try:
               
-            query="select * from student where id = %s"
+            query="select * from library where id = %s"
 
             data = (id,)
 
@@ -99,7 +99,7 @@ class studentdb:
 
         try:
 
-            query="delete from student where id =%s"
+            query="delete from library where id =%s"
 
             data=(id,)
 
@@ -123,7 +123,7 @@ class studentdb:
 
         place_holder=place_holder.rstrip(",")
 
-        query=f"update student set {place_holder} where  id={id} "
+        query=f"update library set {place_holder} where  id={id} "
 
         data = [v for k,v in kwargs.items()]
 
@@ -131,17 +131,20 @@ class studentdb:
 
         self.connection.commit()
 
+            
+instance = Library()
 
-instance = studentdb()
+# instance.add_library(member_name="athira", book_name="night walk",author="sarala",status="issued")
 
-# instance.add_student(name="arun",email="arun@gmail.com",phone="45784512458",course="msc")
+instance.list_library()
 
-# instance.list_student()
 
-instance.fetch_id(2)
 
-instance.update_record(name="sera",id=1)
+# instance.update_record(id=3,member_name="sooraj")
 
-instance.delete_records(4)
+instance.delete_records(3)
 
-instance.list_student()
+instance.fetch_id(1)
+
+
+            
